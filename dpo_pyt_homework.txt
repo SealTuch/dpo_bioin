@@ -1,0 +1,37 @@
+import datetime, matplotlib.pyplot as plt
+
+class patient:
+    temper = []
+
+    def __init__(self, name, surname, dater, diagnosis):
+        self.name = name
+        self.surname = surname
+        self.dater = dater
+        self.diagnosis = diagnosis
+
+    def get_age(self):
+            output = datetime.datetime.today()-datetime.datetime.strptime(self.dater, '%d.%M.%Y')
+            return output.days//365
+
+    def medium_temp(temper):
+        return sum(patient.temper)/len(patient.temper)
+
+    def krivo(temper):
+        # matrix = [[i, patient.temper[i]] for i in range(len(patient.temper))]
+        ab = [i for i in range(len(patient.temper))]
+        plt.plot(ab, patient.temper)
+        plt.show()
+        return ''
+
+a = patient('Or', 'Orov', '12.05.1981', 'idiot')
+print(a.name, a.surname, a.dater, a.diagnosis, sep='\n')
+print(patient.get_age(a))
+for i in range(10):
+    if i % 2 == 0:
+        a.temper.append(37)
+    else:
+        a.temper.append(38)
+print(a.temper)
+print(patient.medium_temp(a))
+print(patient.krivo(a))
+
